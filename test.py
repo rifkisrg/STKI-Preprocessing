@@ -17,9 +17,8 @@ for docs in filtered:
 
     kosong.update({docs_title : docs_token})
 
-# for words in kosong.keys():
-#     words_length = len(words)
-#     jumlah_kata += words_length
+for words in kosong.keys():
+    words_length = len(words)
+    jumlah_kata += words_length
 
-print(kosong)
-# print(jumlah_kata)
+print(jumlah_kata)

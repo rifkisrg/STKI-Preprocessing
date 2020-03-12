@@ -1,0 +1,43 @@
+<DOC>
+<ID>TRI-1</ID>
+<NIM>175150200111048</NIM>
+<TITLE>Pertamina Hemat Rp 1,5 Triliun Gara-Gara Gunakan Teknologi</TITLE>
+<TEXT>
+Liputan6.com, Jakarta - PT Pertamina (Persero) memperoleh penghematan triliunan rupiaha atas penerapan digitalisasi dari operasi pencarian hingga penyaluran minyak dan gas bumi (migas).
+Direktur Keuangan Pertamina Pahala Mansyuri mengatakan, industri migas membutuhan modal besar dan berisiko besar. Dengan penerapan teknologi digital dapat meminimalisir risiko yang ada, sehingga perushaan bisa mendapatkan penghematan.
+?"Sales Pertamina USD 58 miliar atau Rp 800 triliun, setiap tahun investasi Rp 70 triliun. Kita melakukan operasional USD 50 miliar. Mau tidak mau kami menggunakan teknologi digital dalam kegiatan kita," kata Pahala, saat menjadi pembicara dalamacara Disrupto Society, di Plaza Indonesia, Jakarta, Sabtu (23/11/2019).
+Pahala pun menyebutkan teknologi digital yang digunakan Pertamina untuk mendukung kegiatan bisnis Pertamina dintaranya ?big data analytics, internet of think dan robotic.
+"Big data analytic, melakukan modeling banyak dilakukan konsep hulu, Internet of think bisa diterapkan dalam sektor migas. Penting pengembangan teknologi migas adalah robotic dalam pelaksanaan maintenance pada sektor migas," paparnya.
+Adapun penggunaan teknologi digital tersebut diantaranya pada proses pengadaan dengan membuat program yang menyediakan barang jasa.
+Untuk diketahui, dalam satu tahun Pertamina menganggarkan dana Rp 15 sampai 20 triliun untuk pengadaan. Dengan menggunakan teknologi digital dapat menghemat Rp 1,2 sampai1,5 triliun.
+"Total potensi efisiensi bisa mencapai Rp 1,2 triliun sampai Rp 1,5 triliun setiap tahun. Bisa save 10 persen," ujar Pahala.
+Penerapan teknologi digital berikutnya yaitu pada ?analisa perawatan kilang. Upaya ini dilakukan untuk menghindari penghentian operasi kilang di luar rencana. Dari penerapan teknologi digital tersebut, Pertamina bisa menghindari kerugian hingga Rp 35 miliar per hari.
+?"Kilang kita setip harinya memproduksi 1 juta barel per hari minyak outputnya 890 ribu bare per hari BBM. Bayangkan kalau tidak bisa produksi 1 jam saja biayanya besar sekali kalau terjadi unplan shutdown impacnya luar bias, kita hindari dengan menggunakan predictif maintenance," paparnya.
+Dia mengungkapkan, penerapan teknologi digital juga diterapkan pada kegiatan pencarian migas. Selain itu juga pada proses pengapalan dan penyaluran BBM hingga ke konsumen. Penerapan teknologi digital berfungsi pada pengawasan agar penyaluran bisa berjalan dengan baik.
+"Sekarang masing-msing kapal dipasangi GPS berapa lama di satu titik apakah produktif atau tidak, sehingg betul bisa tau, persediaan ada di kapal ini titik pengangkutan ke kilang kalau semakin lama semain tinggi biayanya, kita pengawasan tinggi mengurangi kebocoran dulu 1 persen sekarang dibawah 0,15 persen," tandasnya.
+</TEXT>
+</DOC>
+<DOC>
+<ID>TRI-2</ID>
+<NIM>175150200111048</NIM>
+<TITLE>5 Tanda Handphone Telah Disadap, Perlu Waspada</TITLE>
+<TEXT>
+Liputan6.com, Jakarta Penggunaan perangkat elektronik sangat rentan terhadap yang namanya penyadapan. Terlebih pada handphone, penyadapan membuat penggunanya menjadi cemas.
+Penyadapan mejadi wajar dilakukan hanya untuk kepentingan penyidikan. Namun, jika penyadapan dilakukan untuk kepentingan tertentu dan membuat orang lain rugi akan membuat penggunanya menjadi cemas.
+Penyadapan sering dilakukan oleh pihak ketiga guna mencuri informasi secara diam-diam. Untuk itu, pengguna handphone perlu selalu waspada dan mengenali tanda-tanda handphone-nya sedang disadap.
+Berikut ini ada beberapa tanda yang mudah dikenali jika handphone telah disadap. Telah Liputan6.com rangkum dari berbagai sumber, berikut ulasannya, Selasa (5/11/2019).
+Ada banyak penyebab baterai handphone menjadi panas dan membuatnya jadi cepat habis. Beberapa di antaranya dikarenakan pemakaian aplikasi yang terlalu banyak dan penggunaannya yang tak terkontrol.
+Namun, kamu perlu waspada jika baterai handphone cepat habis padahal penggunaannya masih dalam batas wajar. Hal ini menandakan handphone kamu berhasil disadap oleh pihak ketiga.
+Daya baterai yang lebih cepat habis tanpa penggunaan berlebihan, bisa jadi tanda handphone terdapat malware. Hal ini dikarenakan, handphone yang disadap akan merekam dan mengirimkan semua aktivitas kepada pihak ketiga.
+Inilah yang menyebabkan baterai handphone cepat berkurang hingga membuat kapasitasnya menurun sangat drastis. Handphone yang disadap juga dapat merekam percakapan di dalam ruangan termasuk ketika handphone pada posisi diam.
+Untuk menghubungkan handphone agar bisa mengakses jaringan internet, biasanya dibutuh data selulur atau sambungan sinyal. Penggunaan data seluler yang tidak wajar atau berlebihan bisa menghilangkan datanya dengan sangat cepat.
+Ketika dirasa penggunaan data seluler tidak berlebihan dan data mengalami pengurangan yang cukup drastis, maka kamu perlu curiga. Kondisi ini menandakan adanya pihak ketiga yang sedang masuk ke perangkat kamu.
+Untuk itu, periksa handphone kamu apakah ada peningkatan data tidak wajar dalam penggunaannya. Apabila kamu menemukan sumber masalah seperti aplikasi yang berjalan atau tethering internet, maka ini memungkinkan ada pihak lain yang menumpang lalu lintas internet lewat perangkat kamu.
+Apabila handphone kamu mengalami kinerja menurun atau semakin melambat, maka kamu perlu sedikit curiga. Walaupun sebenarnya masalah ini bisa diatasi dengan membersihkan cache atau menghapus sejumlah data tak terpakai.
+Ketika penyelesaian masalah tersebut tak membuahkan hasil, maka kamu perlu curiga. Di mana kondisi ini merupakan salah satu penyebab yang mungkin terjadi diakibatkan oleh adanya malware.
+Di sini malware akan mengakses informasi dasar termasuk memotong lalu lintas pesan dalam sebuah perangkat. Kondisi ini membuat data yang dibutuhkan melakukan prosesnya dengan menjadikan performa menjadi lebih lambat.
+Pesan aneh atau spam merupakan salah satu tanda lainnya untuk mengetahui kalau handphone kamu telah berhasil disadap. Untuk itu, sebisa mungkin untuk tidak mengabaikan pesan begitu saja yang tiba-tiba muncul dan berisi karakter, angka, atau simbol acak.
+Pesan singkat yang dikirimkan semacam ini merupakan salah satu bentuk kejahatan siber yang biasa dilakukan. Bahkan, apabila berhasil menyusup ke prangkat, pihak yang menyerang dapat mengirim pesan tanpa diketahui oleh si pemilik handphone.
+Pesan yang dikirimkan tersebit biasanya menjadi celah untuk menyerang sasaran lainnya yang diambil berdasarkan kontak korban pertama. Oleh karena itu, penting untuk memerhatikan pesan yang terkirim dari handphonemu dan perhatikan apakah ada pesan yang dikirim tanpa persetujuan pengguna.
+</TEXT>
+</DOC>

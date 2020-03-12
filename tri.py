@@ -6,7 +6,7 @@ import collections
 
 #B,F,K
 
-f = open("corpus.txt", 'r', encoding='ansi')
+f = open("corpus_tri.txt", 'r', encoding='ansi')
 
 soup = BeautifulSoup(f, 'html.parser')
 filtered = soup.find_all("doc")
@@ -31,14 +31,21 @@ def cariFrekuensiKata():
         if words not in kata:
             kata[words]=0
         kata[words] +=1
+
+    return kata
+
+def frekuensibanyak20(kata):
     corpus={k: v for k, v in sorted(kata.items(), key= lambda  item:(-item[1],item[0]))}
     # print(corpus)
     # print(" \n\n")
-    print(collections.Counter(corpus)[:20])
+    tes = dict(list(collections.Counter.most_common(corpus))[:20])
+    print(tes)
+    len(tes)
     print(" \n\n")
     #mendapatkan 20 peringkat frekuensi kata terbanyak
     out = dict(list(corpus.items())[:20])
     print(out)
     print(len(out))
 
-cariFrekuensiKata()
+kata = cariFrekuensiKata()
+frekuensibanyak20(kata)

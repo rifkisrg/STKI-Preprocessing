@@ -13,6 +13,20 @@ filtered = soup.find_all("doc")
 # jumlah_docs = count(filtered)
 jumlah_kata = 0
 
+
+
+def preprocessingKalimat(docs):
+    cleaned = re.sub("[^a-zA-Z\s]+", " ", docs)
+    folded = cleaned.lower()
+    # TOKENIZING
+    token = re.findall("[^\s0-9][A-Za-z]+", folded)
+    return folded
+
+a=preprocessingKalimat(filtered)
+print(a)
+
+
+#mendapatkan semua frekuensi kata yang belum diurutkan
 def cariFrekuensiKata():
     corpus = []
     kata = {}
@@ -27,25 +41,37 @@ def cariFrekuensiKata():
         corpus = docs_token + corpus
 
     for words in corpus:
-        count = 0
         if words not in kata:
             kata[words]=0
         kata[words] +=1
 
     return kata
 
+#mendapatkan frekuensi kata terbesar dari 20 peringkat yang sudah diurutkan
 def frekuensibanyak20(kata):
-    corpus={k: v for k, v in sorted(kata.items(), key= lambda  item:(-item[1],item[0]))}
+    corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
     # print(corpus)
     # print(" \n\n")
-    tes = dict(list(collections.Counter.most_common(corpus))[:20])
-    print(tes)
-    len(tes)
-    print(" \n\n")
+    # tes = dict(list(collections.Counter.most_common(corpus))[:20])
+    # print(tes)
+    # len(tes)
+    # print(" \n\n")
     #mendapatkan 20 peringkat frekuensi kata terbanyak
     out = dict(list(corpus.items())[:20])
-    print(out)
-    print(len(out))
+    print(f"20 peringkat dengan frekuensi kata terbanyak:\n{out}\n")
+    # print(len(out))
 
-kata = cariFrekuensiKata()
-frekuensibanyak20(kata)
+def frekuensiKurang10(kata):
+    corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
+    out = dict((k, v) for k, v in corpus.items() if v < 10)
+    print(out)
+    print(f"Dengan banyak kata yang kurang dari 10 buah yaitu: {len(out)}")
+
+def cariBanyakKalimat(kata):
+    pass
+
+# kata = cariFrekuensiKata()
+# print(kata)
+# frekuensibanyak20(kata)
+# frekuensiKurang10(kata)
+

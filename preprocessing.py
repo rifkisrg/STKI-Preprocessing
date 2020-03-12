@@ -18,3 +18,15 @@ def preprocessing(docs):
     # token_as_string = separator.join(token)
     # stemmed = re.findall("[^\s0-9][A-Za-z]+", stemmer.stem(token_as_string))
     return token
+
+def preprocessing_title(docs):
+    cleaned = re.sub("[^a-zA-Z\s]+", " ", docs)
+    # FOLDING WORDS
+    folded = cleaned.lower()
+    # TOKENIZING
+    token = re.findall("[^\s0-9][A-Za-z]+", folded)
+
+    separator = " "
+    token_as_string = separator.join(token)
+
+    return token_as_string

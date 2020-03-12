@@ -4,34 +4,29 @@ import numpy as np
 import re
 import collections
 
-#B,F,K
-
-f = open("corpus_tri.txt", 'r', encoding='ansi')
-
+f = open("corpus.txt", 'r', encoding='ansi')
+f2 = open("corpus.txt", 'r', encoding='ansi')
 soup = BeautifulSoup(f, 'html.parser')
 filtered = soup.find_all("doc")
-# jumlah_docs = count(filtered)
-jumlah_kata = 0
+filtered2 = f2.read()
 
-
-
-def preprocessingKalimat(docs):
-    cleaned = re.sub("[^a-zA-Z\s]+", " ", docs)
-    folded = cleaned.lower()
-    # TOKENIZING
-    token = re.findall("[^\s0-9][A-Za-z]+", folded)
-    return folded
-
-a=preprocessingKalimat(filtered)
-print(a)
+def cariKalimat(corpus):
+    kalimat = []
+    tes = pp.preprocessingKalimat(corpus)
+    for i in range(len(tes)):
+        for j in range(len(tes[i])):
+            if len(tes[i][j]) > 3:
+                kalimat.append(tes[i][j])
+            else: pass
+    print(f"Banyak kalimat dalam corpus adalah: {len(kalimat)}")
 
 
 #mendapatkan semua frekuensi kata yang belum diurutkan
-def cariFrekuensiKata():
+def cariFrekuensiKata(doc):
     corpus = []
     kata = {}
-    filtered = soup.find_all("doc")
-    for docs in filtered:
+
+    for docs in doc:
         regex = r"[^_0-9\W]+"
         docs_title = docs.find("title").text
         docs_title = re.findall(regex,docs_title.lower())
@@ -50,28 +45,16 @@ def cariFrekuensiKata():
 #mendapatkan frekuensi kata terbesar dari 20 peringkat yang sudah diurutkan
 def frekuensibanyak20(kata):
     corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
-    # print(corpus)
-    # print(" \n\n")
-    # tes = dict(list(collections.Counter.most_common(corpus))[:20])
-    # print(tes)
-    # len(tes)
-    # print(" \n\n")
     #mendapatkan 20 peringkat frekuensi kata terbanyak
     out = dict(list(corpus.items())[:20])
     print(f"20 peringkat dengan frekuensi kata terbanyak:\n{out}\n")
-    # print(len(out))
 
 def frekuensiKurang10(kata):
     corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
     out = dict((k, v) for k, v in corpus.items() if v < 10)
-    print(out)
-    print(f"Dengan banyak kata yang kurang dari 10 buah yaitu: {len(out)}")
+    print(f"Banyak kata yang kurang dari 10 buah yaitu: {len(out)}\n")
 
-def cariBanyakKalimat(kata):
-    pass
-
-# kata = cariFrekuensiKata()
-# print(kata)
-# frekuensibanyak20(kata)
-# frekuensiKurang10(kata)
-
+kata = cariFrekuensiKata(filtered)
+frekuensibanyak20(kata)
+frekuensiKurang10(kata)
+cariKalimat(filtered2)

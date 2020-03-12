@@ -19,3 +19,13 @@ def preprocessing(docs):
     # stemmed = re.findall("[^\s0-9][A-Za-z]+", stemmer.stem(token_as_string))
     return token
 
+
+def preprocessingKalimat(docs):
+    # CLEANING WORDS FROM NON-ALPHANUMERICAL
+    cleaned = re.sub("<.*?>(\w+-[0-9]{0,90}|\d{2,90})?", " ", docs)
+    # FOLDING WORDS
+    # folded = cleaned.lower()
+    # TOKENIZING
+    token = re.findall("(.*?)(\. |\n)", cleaned)
+    return token
+

@@ -7,20 +7,12 @@ import matplotlib.pyplot as plt
 current = time()
 
 # Korpus dokumen
-f = open("corpus.txt", 'r', encoding='ansi')
-f2 = open("corpus.txt", 'r', encoding='ansi') #untuk menghitung jumlah kalimat
+f = open("corpus.txt", 'r', encoding='ansi').read()
+f2 = open("corpus.txt", 'r', encoding='ansi').read() #untuk menghitung jumlah kalimat
 
 # Korpus Pak Putra Pandu Adikara yang dijadikan acuan dalam beberapa proses di program ini
 with open("new-kata-dasar.txt", 'r') as kata:
     katdas = kata.read()
-
-# Memparsing file corpus dokumen agar dapat diproses
-soup = BeautifulSoup(f, 'html.parser')
-
-filtered = soup.find_all("doc")
-filtered2 = f2.read()
-list_of_title = [] #List untuk menyimpan teks dari tag title
-list_of_text = [] #List untuk menyimpan teks dari tag text
 
 # Method untuk preprocessing (cleaning, folding, tokenisasi pada dokumen)
 def preprocessing(docs):
@@ -40,10 +32,19 @@ def preprocessingKalimat(docs):
     token = re.findall("(.*?)(\. |\n)", cleaned)
     return token
 
-#melakukan preprocessing pada masing-masing text dan title dalam dokumen korpus
-for docs in filtered:
-    list_of_title.append(preprocessing(docs.find("title").text))
-    list_of_text.append(preprocessing(docs.find("text").text))
+titles = re.findall("<TITLE>(.*?)<\/TITLE>", f, re.DOTALL) #regex untuk mengambil title pada korpus
+texts = re.findall("<TEXT>(.*?)<\/TEXT>", f, re.DOTALL)  #regex untuk mengambil text pada korpus
+
+list_of_title = [] #List untuk menyimpan semua title pada korpus
+list_of_text = [] #List untuk menyimpan semua text pada korpus
+
+for title in titles:
+    title = preprocessing(title)
+    list_of_title.append(title)
+
+for text in texts:
+    text = preprocessing(text)
+    list_of_text.append(text)
 
 all_words = sum(list_of_title+list_of_text, []) #Menyatukan list yang berisi teks title dan teks tag
 
@@ -160,7 +161,7 @@ words_with_an = cari_imbuhan_kan(sum(list_of_title + list_of_text, []))
 print("J. Jumlah kata unik yang berimbuhan -an : ", words_with_an, " kata")
 
 # Mencari banyak kalimat dalam korpus
-print("K. Jumlah kalimat dalam korpus : ", cariKalimat(filtered2), " kalimat")
+print("K. Jumlah kalimat dalam korpus : ", cariKalimat(f2), " kalimat")
 
 # Mencari frase bigram dari setiap title dan text
 bigram_from_title = ngrams(list_of_title, 2)
@@ -179,6 +180,7 @@ counter_gambar = dict(Counter(all_words).most_common(50))
 x = [token for token in counter_gambar.keys()]
 y = [jumlah for jumlah in counter_gambar.values()]
 
+print("Gambar grafik distibusi zipf pada korpus: ")
 plt.plot(x,y)
 plt.xlabel('Token')
 plt.ylabel('Jumlah')

@@ -35,8 +35,8 @@ def preprocessingKalimat(docs):
 titles = re.findall("<TITLE>(.*?)<\/TITLE>", f, re.DOTALL) #regex untuk mengambil title pada korpus
 texts = re.findall("<TEXT>(.*?)<\/TEXT>", f, re.DOTALL)  #regex untuk mengambil text pada korpus
 
-list_of_title = [] #List untuk menyimpan semua title pada korpus
-list_of_text = [] #List untuk menyimpan semua text pada korpus
+list_of_title = [] # List untuk menyimpan semua title pada korpus
+list_of_text = [] # List untuk menyimpan semua text pada korpus
 
 for title in titles:
     title = preprocessing(title)

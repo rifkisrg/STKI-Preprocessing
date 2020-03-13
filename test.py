@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 from time import time
 import re
 from collections import Counter

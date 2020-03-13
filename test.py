@@ -1,19 +1,15 @@
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from bs4 import BeautifulSoup
+from time import time
 import preprocessing as pp
 import re
-from datetime import datetime
 from collections import Counter
 import matplotlib.pyplot as plt
 
-print("Program start at = ", datetime.now().time())
-
-factory = StemmerFactory()
-stemmer = factory.create_stemmer()
+current = time()
 
 # Korpus dokumen
 f = open("corpus.txt", 'r', encoding='ansi')
-f2 = open("corpus.txt", 'r', encoding='ansi')
+f2 = open("corpus.txt", 'r', encoding='ansi') #untuk menghitung jumlah kalimat
 
 # Korpus Pak Putra Pandu Adikara yang dijadikan acuan dalam beberapa proses di program ini
 with open("new-kata-dasar.txt", 'r') as kata:
@@ -26,20 +22,15 @@ filtered = soup.find_all("doc")
 filtered2 = f2.read()
 list_of_title = [] #List untuk menyimpan teks dari tag title
 list_of_text = [] #List untuk menyimpan teks dari tag text
-list_of_sentence = []
-words_with_ber = [] #List untuk menyimpan kata dengan 3 huruf awal berupa "ber"
-separator = " "
 
+#melakukan preprocessing pada masing-masing text dan title dalam dokumen korpus
 for docs in filtered:
-    docs_title = docs.find("title").text
-    docs_text = docs.find("text").text
-    title_docs_pp = pp.preprocessing(docs_title)
-    docs_token = pp.preprocessing(docs_text)
-    list_of_title.append(title_docs_pp)
-    list_of_text.append(docs_token)
+    list_of_title.append(pp.preprocessing(docs.find("title").text))
+    list_of_text.append(pp.preprocessing(docs.find("text").text))
 
 all_words = sum(list_of_title+list_of_text, []) #Menyatukan list yang berisi teks title dan teks tag
 
+# Menghitung jumlah kalimat didalam korpus
 def cariKalimat(corpus):
     kalimat = []
     tes = pp.preprocessingKalimat(corpus)
@@ -48,7 +39,7 @@ def cariKalimat(corpus):
             if len(tes[i][j]) > 3:
                 kalimat.append(tes[i][j])
             else: pass
-    print(f"K. Banyak kalimat dalam corpus adalah: {len(kalimat)}")
+    return len(kalimat)
 
 # Mencari kata dasar dari kata yang memiliki imbuhan ber-
 def find_kata_dasar(array_kata):
@@ -57,7 +48,7 @@ def find_kata_dasar(array_kata):
     for doc_words in array_kata:
         words_length = len(doc_words)
         jumlah_kata += words_length
-        words_as_string = separator.join(doc_words)
+        words_as_string = " ".join(doc_words)
         reg = re.findall(r"\bber[A-Za-z]+", words_as_string)
         for words in reg:
             if words in katdas:
@@ -87,12 +78,12 @@ def cari_imbuhan_kan(array_kata):
 
     return len(set(kata_dasar))
 
+# Menghitung banyak token pada korpus
 def calculate_all_words(array_of_words):
-    jlh_kata = 0
-    for x in array_of_words:
-        jlh_kata += len(x)
-    return jlh_kata
+    jumlah_kata = [len(x) for x in array_of_words]
+    return sum(jumlah_kata)
 
+# Menghitung frekuensi setiap token pada korpus, untuk mencari 20 kata yang muncul di seluruh dokumen dan 10 kata yang hanya muncul di 50 dokumen
 def find_doc_freq(array_of_title, array_of_text):
     docs_freq = {}
     for i, j in zip(array_of_title, array_of_text):
@@ -109,6 +100,7 @@ def find_doc_freq(array_of_title, array_of_text):
 
     return [on_50_only, all_docs]
 
+# Menghitung jumlah frasa bigram dan trigram
 def ngrams(array_of_text, n):
     x = []
     for y in array_of_text:
@@ -137,21 +129,21 @@ temp_list = [val for val in Counter(all_words).values() if val < 10]
 print("F. Banyak kata yang frekuensinya kurang dari 10 adalah : ",len(temp_list), " kata")
 
 # Mencari jumlah seluruh kata dari korpus
-print("G. Banyak seluruh kata dalam korpus adalah ", calculate_all_words(list_of_title + list_of_text), " Kata")
+print("G. Banyak seluruh kata dalam korpus adalah ", calculate_all_words(list_of_title + list_of_text), " kata")
 
 # Jumlah kata unik pada korpus
-print("H. Kata unik pada korpus berjumlah sebanyak ", len(list(set(all_words))), " kata")
+print("H. Kata unik pada korpus berjumlah sebanyak ", len((set(all_words))), " kata")
 
 # Mencari kata dasar dari imbuhan ber-
 kata_dasar = find_kata_dasar(list_of_title + list_of_text)
-print("I. Jumlah kata unik yang berimbuhan ber- : ",kata_dasar)
+print("I. Jumlah kata unik yang berimbuhan ber- : ",kata_dasar, " kata")
 
 # Mencari kata dasar dari imbuhan -kan
 words_with_an = cari_imbuhan_kan(sum(list_of_title + list_of_text, []))
-print("J. Jumlah kata unik yang berimbuhan -an : ", words_with_an)
+print("J. Jumlah kata unik yang berimbuhan -an : ", words_with_an, " kata")
 
 # Mencari banyak kalimat dalam korpus
-cariKalimat(filtered2)
+print("K. Jumlah kalimat dalam korpus : ", cariKalimat(filtered2), " kalimat")
 
 # Mencari frase bigram dari setiap title dan text
 bigram_from_title = ngrams(list_of_title, 2)
@@ -160,8 +152,8 @@ bigram_from_text = ngrams(list_of_text, 2)
 trigram_from_title = ngrams(list_of_title, 3)
 trigram_from_text = ngrams(list_of_text, 3)
 # Mengambil 20 frase bigram dan trigram dengan kemunculan yang paling banyak
-print("L1. Frekuensi 20 frase Bigram yang paling sering muncul: ", Counter(bigram_from_title + bigram_from_text).most_common(20))
-print("L2. Frekuensi 20 frase Trigram yang paling sering muncul: ",Counter(trigram_from_title + trigram_from_text).most_common(20))
+print("L1. Frekuensi 20 frase Bigram yang paling sering muncul: \n", Counter(bigram_from_title + bigram_from_text).most_common(20))
+print("L2. Frekuensi 20 frase Trigram yang paling sering muncul: \n",Counter(trigram_from_title + trigram_from_text).most_common(20))
 
 # Grafik distribusi Zipf dengan mengambil sebanyak 50 kata yang paling sering muncul
 # Menjawab soal nomor 3 poin E.
@@ -176,4 +168,4 @@ plt.ylabel('Jumlah')
 plt.title('Distribusi Zipf')
 plt.show()
 
-print("Program end at = ", datetime.now().time())
+print(time() - current, "detik")

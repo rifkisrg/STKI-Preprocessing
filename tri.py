@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 import preprocessing as pp
-import numpy as np
 import re
-import collections
 
 f = open("corpus.txt", 'r', encoding='ansi')
 f2 = open("corpus.txt", 'r', encoding='ansi')

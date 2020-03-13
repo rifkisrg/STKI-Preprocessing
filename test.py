@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from time import time
-import preprocessing as pp
 import re
 from collections import Counter
 import matplotlib.pyplot as plt
@@ -23,17 +22,35 @@ filtered2 = f2.read()
 list_of_title = [] #List untuk menyimpan teks dari tag title
 list_of_text = [] #List untuk menyimpan teks dari tag text
 
+# Method untuk preprocessing (cleaning, folding, tokenisasi pada dokumen)
+def preprocessing(docs):
+    # CLEANING WORDS FROM NON-ALPHANUMERICAL
+    cleaned = re.sub("[^a-zA-Z\s]+", " ", docs)
+    # FOLDING WORDS
+    folded = cleaned.lower()
+    # TOKENIZING
+    token = re.findall("[^\s0-9][A-Za-z]+", folded)
+    return token
+
+# Method untuk preprocessing yang akan digunakan saat pada saat segmentasi kalimat
+def preprocessingKalimat(docs):
+    # CLEANING WORDS FROM NON-ALPHANUMERICAL
+    cleaned = re.sub("<.*?>(\w+-[0-9]{0,90}|\d{2,90})?", " ", docs)
+    # TOKENIZING
+    token = re.findall("(.*?)(\. |\n)", cleaned)
+    return token
+
 #melakukan preprocessing pada masing-masing text dan title dalam dokumen korpus
 for docs in filtered:
-    list_of_title.append(pp.preprocessing(docs.find("title").text))
-    list_of_text.append(pp.preprocessing(docs.find("text").text))
+    list_of_title.append(preprocessing(docs.find("title").text))
+    list_of_text.append(preprocessing(docs.find("text").text))
 
 all_words = sum(list_of_title+list_of_text, []) #Menyatukan list yang berisi teks title dan teks tag
 
 # Menghitung jumlah kalimat didalam korpus
 def cariKalimat(corpus):
     kalimat = []
-    tes = pp.preprocessingKalimat(corpus)
+    tes = preprocessingKalimat(corpus)
     for i in range(len(tes)):
         for j in range(len(tes[i])):
             if len(tes[i][j]) > 3:
@@ -132,7 +149,7 @@ print("F. Banyak kata yang frekuensinya kurang dari 10 adalah : ",len(temp_list)
 print("G. Banyak seluruh kata dalam korpus adalah ", calculate_all_words(list_of_title + list_of_text), " kata")
 
 # Jumlah kata unik pada korpus
-print("H. Kata unik pada korpus berjumlah sebanyak ", len((set(all_words))), " kata")
+print("H. Kata unik pada korpus berjumlah sebanyak ", len(set(all_words)), " kata")
 
 # Mencari kata dasar dari imbuhan ber-
 kata_dasar = find_kata_dasar(list_of_title + list_of_text)

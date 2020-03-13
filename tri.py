@@ -48,8 +48,8 @@ def frekuensibanyak20(kata):
     print(f"20 peringkat dengan frekuensi kata terbanyak:\n{out}\n")
 
 def frekuensiKurang10(kata):
-    corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
-    out = dict((k, v) for k, v in corpus.items() if v < 10)
+    # corpus={k: v for k, v in sorted(kata.items(), key=lambda item:(-item[1],item[0]))}
+    out = dict((k, v) for k, v in kata.items() if v < 10)
     print(f"Banyak kata yang kurang dari 10 buah yaitu: {len(out)}\n")
 
 kata = cariFrekuensiKata(filtered)
